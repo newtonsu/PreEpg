@@ -1,0 +1,42 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+         updateCheck="true"
+         name="cacheManagerp">
+
+    <diskStore path="java.io.tmpdir"/>
+
+    <!-- 集群配置 -->
+    <cacheManagerPeerProviderFactory class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+                                     properties="peerDiscovery=manual,rmiUrls=//127.0.0.1:4002/userCache"/>
+
+    <cacheManagerPeerListenerFactory class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
+                                     properties="hostName=127.0.0.1, port=4001,socketTimeoutMillis=2000"/>
+
+
+    <!-- 集群配置 -->
+<!--    <cacheManagerPeerProviderFactory class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+                                     properties="peerDiscovery=manual,rmiUrls=//127.0.0.1:4001/userCache"/>
+
+    <cacheManagerPeerListenerFactory class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
+                                     properties="hostName=127.0.0.1, port=4002,socketTimeoutMillis=2000"/>-->
+
+
+    <cacheManagerEventListenerFactory class="com.starcor.epg.cache.ehcache.MyCacheManagerEventListenerFactory" />
+
+    <cache name="userCache"
+           maxEntriesLocalHeap="10000"
+           maxEntriesLocalDisk="0"
+           eternal="false"
+           diskSpoolBufferSizeMB="20"
+           timeToIdleSeconds="3600"
+           timeToLiveSeconds="0"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off"
+    >
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"/>
+        <cacheEventListenerFactory class="com.starcor.epg.cache.ehcache.MyCacheEventListenerFactory" listenFor="all"/>
+        <bootstrapCacheLoaderFactory class="net.sf.ehcache.distribution.RMIBootstrapCacheLoaderFactory"/>
+        <persistence strategy="localTempSwap"/>
+    </cache>
+
+</ehcache>

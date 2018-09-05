@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="preepg-web:war">
+    <output-path>$PROJECT_DIR$/preepg-web/target</output-path>
+    <root id="archive" name="preepg-web.war">
+      <element id="artifact" artifact-name="preepg-web:war exploded" />
+    </root>
+  </artifact>
+</component>

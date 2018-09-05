@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/preepg-api/preepg-api.iml" filepath="$PROJECT_DIR$/preepg-api/preepg-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/preepg-demo.iml" filepath="$PROJECT_DIR$/preepg-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/preepg-service/preepg-service.iml" filepath="$PROJECT_DIR$/preepg-service/preepg-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/preepg-web/preepg-web.iml" filepath="$PROJECT_DIR$/preepg-web/preepg-web.iml" />
+    </modules>
+  </component>
+</project>
